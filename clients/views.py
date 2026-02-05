@@ -42,3 +42,14 @@ class RegisterView(APIView):
             {"message": "Usuario creado correctamente"},
             status=status.HTTP_201_CREATED
         )
+
+class MeView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        return Response({
+            "id": user.id,
+            "username": user.username,
+            "email": user.email,
+        })
