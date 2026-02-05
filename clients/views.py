@@ -4,6 +4,12 @@ from .models import Client
 from .serializers import ClientSerializer
 from .permissions import IsOwner
 from .pagination import ClientPagination
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.permissions import AllowAny
+
+from .serializers import RegisterSerializer
 
 
 class ClientViewSet(viewsets.ModelViewSet):
@@ -24,3 +30,15 @@ class ClientViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+class RegisterView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        serializer = RegisterSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(
+            {"message": "Usuario creado correctamente"},
+            status=status.HTTP_201_CREATED
+        )
