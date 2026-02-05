@@ -53,6 +53,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DATABASES = {
     'default': {
@@ -81,7 +82,8 @@ REST_FRAMEWORK = {
         'user': '1000/day',
     },
 }
-    
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
