@@ -26,9 +26,10 @@ class ClientViewSet(viewsets.ModelViewSet):
     pagination_class = ClientPagination
 
     def get_queryset(self):
-        return Client.objects.filter(owner=self.request.user).order_by('-created_at')
+        return Client.objects.all()
 
     def perform_create(self, serializer):
+        print("User >>>",self.request.user)
         serializer.save(owner=self.request.user)
 
 class RegisterView(APIView):
