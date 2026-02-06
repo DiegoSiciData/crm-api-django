@@ -59,17 +59,21 @@ Proyecto orientado a demostrar buenas prácticas backend: autenticación real, s
 1. Clonar repositorio
 2. Crear entorno virtual
 3. Instalar dependencias:
-   ```
-   pip install -r requirements.txt
-   ```
+    ```bash
+    pip install -r requirements.txt
+    ```
 4. Configurar variables de entorno
 
 5. Ejecutar migraciones:
+    ```bash
+    python manage.py migrate
+    ```
 
-python manage.py migrate
 6. Levantar servidor:
+    ```bash
+    python manage.py runserver
+    ```
 
-python manage.py runserver
 ## Producción
 
 API desplegada en Render:
@@ -78,9 +82,8 @@ https://crm-api-django.onrender.com/
 Nota: los endpoints protegidos requieren token JWT válido.
 
 ## Testing
-Probado manualmente con Insomnia
-
-Pruebas directas sobre endpoints públicos y protegidos
+- Pruebas manuales realizadas con Insomnia
+- Validación de endpoints públicos y protegidos por JWT
 
 ## Estado del Proyecto
 - Funcional
